@@ -31,31 +31,31 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabEstudiante = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonAnadirMateria = new System.Windows.Forms.Button();
-            this.buttonEliminarMateria = new System.Windows.Forms.Button();
-            this.listaMaterias = new System.Windows.Forms.ListBox();
-            this.textBoxMateria = new System.Windows.Forms.TextBox();
+            this.comboBoxMateriasEstudiante = new System.Windows.Forms.ComboBox();
+            this.buttonAnadirMateriaEstudiante = new System.Windows.Forms.Button();
+            this.buttonEliminarMateriaEstudiante = new System.Windows.Forms.Button();
+            this.listBoxMateriasEstudiante = new System.Windows.Forms.ListBox();
             this.tabProfesor = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelFacultad = new System.Windows.Forms.Label();
-            this.buttonFacultad = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.buttonFacultadModificar = new System.Windows.Forms.Button();
+            this.comboBoxFacultad = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.buttonAnadir = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBoxMateriasProfesor = new System.Windows.Forms.ComboBox();
+            this.buttonMateriaAnadirProfesor = new System.Windows.Forms.Button();
+            this.buttonMateriaEliminarProfesor = new System.Windows.Forms.Button();
+            this.listBoxMateriasProfesor = new System.Windows.Forms.ListBox();
             this.tabAdministrativo = new System.Windows.Forms.TabPage();
-            this.tabServicios_Varios = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonDependencia = new System.Windows.Forms.Button();
+            this.buttonDependenciaConfirmar = new System.Windows.Forms.Button();
+            this.labelDependenciaMostrar = new System.Windows.Forms.Label();
+            this.comboBoxDependencia = new System.Windows.Forms.ComboBox();
+            this.tabServicios_Varios = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.comboBoxLabores = new System.Windows.Forms.ComboBox();
             this.buttonLaborAnadir = new System.Windows.Forms.Button();
             this.buttonLaborEliminar = new System.Windows.Forms.Button();
             this.listBoxLabores = new System.Windows.Forms.ListBox();
-            this.comboBoxLabores = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabEstudiante.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,8 +63,8 @@
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabAdministrativo.SuspendLayout();
-            this.tabServicios_Varios.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabServicios_Varios.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,10 +94,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.buttonAnadirMateria);
-            this.groupBox1.Controls.Add(this.buttonEliminarMateria);
-            this.groupBox1.Controls.Add(this.listaMaterias);
-            this.groupBox1.Controls.Add(this.textBoxMateria);
+            this.groupBox1.Controls.Add(this.comboBoxMateriasEstudiante);
+            this.groupBox1.Controls.Add(this.buttonAnadirMateriaEstudiante);
+            this.groupBox1.Controls.Add(this.buttonEliminarMateriaEstudiante);
+            this.groupBox1.Controls.Add(this.listBoxMateriasEstudiante);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(317, 212);
@@ -105,39 +105,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Materias";
             // 
-            // buttonAnadirMateria
+            // comboBoxMateriasEstudiante
             // 
-            this.buttonAnadirMateria.Location = new System.Drawing.Point(147, 44);
-            this.buttonAnadirMateria.Name = "buttonAnadirMateria";
-            this.buttonAnadirMateria.Size = new System.Drawing.Size(75, 23);
-            this.buttonAnadirMateria.TabIndex = 3;
-            this.buttonAnadirMateria.Text = "Añadir";
-            this.buttonAnadirMateria.UseVisualStyleBackColor = true;
+            this.comboBoxMateriasEstudiante.FormattingEnabled = true;
+            this.comboBoxMateriasEstudiante.Location = new System.Drawing.Point(20, 45);
+            this.comboBoxMateriasEstudiante.Name = "comboBoxMateriasEstudiante";
+            this.comboBoxMateriasEstudiante.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxMateriasEstudiante.TabIndex = 4;
             // 
-            // buttonEliminarMateria
+            // buttonAnadirMateriaEstudiante
             // 
-            this.buttonEliminarMateria.Location = new System.Drawing.Point(147, 84);
-            this.buttonEliminarMateria.Name = "buttonEliminarMateria";
-            this.buttonEliminarMateria.Size = new System.Drawing.Size(75, 23);
-            this.buttonEliminarMateria.TabIndex = 2;
-            this.buttonEliminarMateria.Text = "Eliminar";
-            this.buttonEliminarMateria.UseVisualStyleBackColor = true;
+            this.buttonAnadirMateriaEstudiante.Location = new System.Drawing.Point(147, 44);
+            this.buttonAnadirMateriaEstudiante.Name = "buttonAnadirMateriaEstudiante";
+            this.buttonAnadirMateriaEstudiante.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnadirMateriaEstudiante.TabIndex = 3;
+            this.buttonAnadirMateriaEstudiante.Text = "Añadir";
+            this.buttonAnadirMateriaEstudiante.UseVisualStyleBackColor = true;
+            this.buttonAnadirMateriaEstudiante.Click += new System.EventHandler(this.buttonAnadirMateriaEstudiante_Click);
             // 
-            // listaMaterias
+            // buttonEliminarMateriaEstudiante
             // 
-            this.listaMaterias.FormattingEnabled = true;
-            this.listaMaterias.ItemHeight = 15;
-            this.listaMaterias.Location = new System.Drawing.Point(21, 84);
-            this.listaMaterias.Name = "listaMaterias";
-            this.listaMaterias.Size = new System.Drawing.Size(120, 94);
-            this.listaMaterias.TabIndex = 1;
+            this.buttonEliminarMateriaEstudiante.Location = new System.Drawing.Point(147, 84);
+            this.buttonEliminarMateriaEstudiante.Name = "buttonEliminarMateriaEstudiante";
+            this.buttonEliminarMateriaEstudiante.Size = new System.Drawing.Size(75, 23);
+            this.buttonEliminarMateriaEstudiante.TabIndex = 2;
+            this.buttonEliminarMateriaEstudiante.Text = "Eliminar";
+            this.buttonEliminarMateriaEstudiante.UseVisualStyleBackColor = true;
             // 
-            // textBoxMateria
+            // listBoxMateriasEstudiante
             // 
-            this.textBoxMateria.Location = new System.Drawing.Point(21, 44);
-            this.textBoxMateria.Name = "textBoxMateria";
-            this.textBoxMateria.Size = new System.Drawing.Size(120, 23);
-            this.textBoxMateria.TabIndex = 0;
+            this.listBoxMateriasEstudiante.FormattingEnabled = true;
+            this.listBoxMateriasEstudiante.ItemHeight = 15;
+            this.listBoxMateriasEstudiante.Location = new System.Drawing.Point(21, 84);
+            this.listBoxMateriasEstudiante.Name = "listBoxMateriasEstudiante";
+            this.listBoxMateriasEstudiante.Size = new System.Drawing.Size(120, 94);
+            this.listBoxMateriasEstudiante.TabIndex = 1;
             // 
             // tabProfesor
             // 
@@ -154,8 +156,8 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.labelFacultad);
-            this.groupBox2.Controls.Add(this.buttonFacultad);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.buttonFacultadModificar);
+            this.groupBox2.Controls.Add(this.comboBoxFacultad);
             this.groupBox2.Location = new System.Drawing.Point(331, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(317, 178);
@@ -172,29 +174,29 @@
             this.labelFacultad.TabIndex = 2;
             this.labelFacultad.Text = "label1";
             // 
-            // buttonFacultad
+            // buttonFacultadModificar
             // 
-            this.buttonFacultad.Location = new System.Drawing.Point(181, 43);
-            this.buttonFacultad.Name = "buttonFacultad";
-            this.buttonFacultad.Size = new System.Drawing.Size(75, 23);
-            this.buttonFacultad.TabIndex = 1;
-            this.buttonFacultad.Text = "Modificar";
-            this.buttonFacultad.UseVisualStyleBackColor = true;
+            this.buttonFacultadModificar.Location = new System.Drawing.Point(181, 43);
+            this.buttonFacultadModificar.Name = "buttonFacultadModificar";
+            this.buttonFacultadModificar.Size = new System.Drawing.Size(75, 23);
+            this.buttonFacultadModificar.TabIndex = 1;
+            this.buttonFacultadModificar.Text = "Modificar";
+            this.buttonFacultadModificar.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBoxFacultad
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxFacultad.FormattingEnabled = true;
+            this.comboBoxFacultad.Location = new System.Drawing.Point(6, 43);
+            this.comboBoxFacultad.Name = "comboBoxFacultad";
+            this.comboBoxFacultad.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxFacultad.TabIndex = 0;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.buttonAnadir);
-            this.groupBox4.Controls.Add(this.buttonEliminar);
-            this.groupBox4.Controls.Add(this.listBox1);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.comboBoxMateriasProfesor);
+            this.groupBox4.Controls.Add(this.buttonMateriaAnadirProfesor);
+            this.groupBox4.Controls.Add(this.buttonMateriaEliminarProfesor);
+            this.groupBox4.Controls.Add(this.listBoxMateriasProfesor);
             this.groupBox4.Location = new System.Drawing.Point(8, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(317, 212);
@@ -202,39 +204,40 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Materias";
             // 
-            // buttonAnadir
+            // comboBoxMateriasProfesor
             // 
-            this.buttonAnadir.Location = new System.Drawing.Point(147, 44);
-            this.buttonAnadir.Name = "buttonAnadir";
-            this.buttonAnadir.Size = new System.Drawing.Size(75, 23);
-            this.buttonAnadir.TabIndex = 3;
-            this.buttonAnadir.Text = "Añadir";
-            this.buttonAnadir.UseVisualStyleBackColor = true;
+            this.comboBoxMateriasProfesor.FormattingEnabled = true;
+            this.comboBoxMateriasProfesor.Location = new System.Drawing.Point(21, 43);
+            this.comboBoxMateriasProfesor.Name = "comboBoxMateriasProfesor";
+            this.comboBoxMateriasProfesor.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxMateriasProfesor.TabIndex = 4;
             // 
-            // buttonEliminar
+            // buttonMateriaAnadirProfesor
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(147, 84);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEliminar.TabIndex = 2;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonMateriaAnadirProfesor.Location = new System.Drawing.Point(147, 44);
+            this.buttonMateriaAnadirProfesor.Name = "buttonMateriaAnadirProfesor";
+            this.buttonMateriaAnadirProfesor.Size = new System.Drawing.Size(75, 23);
+            this.buttonMateriaAnadirProfesor.TabIndex = 3;
+            this.buttonMateriaAnadirProfesor.Text = "Añadir";
+            this.buttonMateriaAnadirProfesor.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // buttonMateriaEliminarProfesor
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(21, 84);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 94);
-            this.listBox1.TabIndex = 1;
+            this.buttonMateriaEliminarProfesor.Location = new System.Drawing.Point(147, 84);
+            this.buttonMateriaEliminarProfesor.Name = "buttonMateriaEliminarProfesor";
+            this.buttonMateriaEliminarProfesor.Size = new System.Drawing.Size(75, 23);
+            this.buttonMateriaEliminarProfesor.TabIndex = 2;
+            this.buttonMateriaEliminarProfesor.Text = "Eliminar";
+            this.buttonMateriaEliminarProfesor.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // listBoxMateriasProfesor
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 23);
-            this.textBox1.TabIndex = 0;
+            this.listBoxMateriasProfesor.FormattingEnabled = true;
+            this.listBoxMateriasProfesor.ItemHeight = 15;
+            this.listBoxMateriasProfesor.Location = new System.Drawing.Point(21, 84);
+            this.listBoxMateriasProfesor.Name = "listBoxMateriasProfesor";
+            this.listBoxMateriasProfesor.Size = new System.Drawing.Size(120, 94);
+            this.listBoxMateriasProfesor.TabIndex = 1;
             // 
             // tabAdministrativo
             // 
@@ -246,6 +249,45 @@
             this.tabAdministrativo.Text = "Administrativo";
             this.tabAdministrativo.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.buttonDependenciaConfirmar);
+            this.groupBox5.Controls.Add(this.labelDependenciaMostrar);
+            this.groupBox5.Controls.Add(this.comboBoxDependencia);
+            this.groupBox5.Location = new System.Drawing.Point(31, 29);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(331, 201);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Dependencia";
+            // 
+            // buttonDependenciaConfirmar
+            // 
+            this.buttonDependenciaConfirmar.Location = new System.Drawing.Point(159, 32);
+            this.buttonDependenciaConfirmar.Name = "buttonDependenciaConfirmar";
+            this.buttonDependenciaConfirmar.Size = new System.Drawing.Size(75, 23);
+            this.buttonDependenciaConfirmar.TabIndex = 2;
+            this.buttonDependenciaConfirmar.Text = "Confirmar";
+            this.buttonDependenciaConfirmar.UseVisualStyleBackColor = true;
+            this.buttonDependenciaConfirmar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // labelDependenciaMostrar
+            // 
+            this.labelDependenciaMostrar.AutoSize = true;
+            this.labelDependenciaMostrar.Location = new System.Drawing.Point(6, 156);
+            this.labelDependenciaMostrar.Name = "labelDependenciaMostrar";
+            this.labelDependenciaMostrar.Size = new System.Drawing.Size(38, 15);
+            this.labelDependenciaMostrar.TabIndex = 1;
+            this.labelDependenciaMostrar.Text = "label1";
+            // 
+            // comboBoxDependencia
+            // 
+            this.comboBoxDependencia.FormattingEnabled = true;
+            this.comboBoxDependencia.Location = new System.Drawing.Point(6, 32);
+            this.comboBoxDependencia.Name = "comboBoxDependencia";
+            this.comboBoxDependencia.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxDependencia.TabIndex = 0;
+            // 
             // tabServicios_Varios
             // 
             this.tabServicios_Varios.Controls.Add(this.groupBox6);
@@ -255,45 +297,6 @@
             this.tabServicios_Varios.TabIndex = 3;
             this.tabServicios_Varios.Text = "Servicios Varios";
             this.tabServicios_Varios.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.buttonDependencia);
-            this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.comboBox2);
-            this.groupBox5.Location = new System.Drawing.Point(31, 29);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(331, 201);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Dependencia";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 32);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 156);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            // 
-            // buttonDependencia
-            // 
-            this.buttonDependencia.Location = new System.Drawing.Point(159, 32);
-            this.buttonDependencia.Name = "buttonDependencia";
-            this.buttonDependencia.Size = new System.Drawing.Size(75, 23);
-            this.buttonDependencia.TabIndex = 2;
-            this.buttonDependencia.Text = "Confirmar";
-            this.buttonDependencia.UseVisualStyleBackColor = true;
-            this.buttonDependencia.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox6
             // 
@@ -307,6 +310,14 @@
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Labores";
+            // 
+            // comboBoxLabores
+            // 
+            this.comboBoxLabores.FormattingEnabled = true;
+            this.comboBoxLabores.Location = new System.Drawing.Point(20, 44);
+            this.comboBoxLabores.Name = "comboBoxLabores";
+            this.comboBoxLabores.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxLabores.TabIndex = 4;
             // 
             // buttonLaborAnadir
             // 
@@ -335,14 +346,6 @@
             this.listBoxLabores.Size = new System.Drawing.Size(120, 94);
             this.listBoxLabores.TabIndex = 1;
             // 
-            // comboBoxLabores
-            // 
-            this.comboBoxLabores.FormattingEnabled = true;
-            this.comboBoxLabores.Location = new System.Drawing.Point(20, 44);
-            this.comboBoxLabores.Name = "comboBoxLabores";
-            this.comboBoxLabores.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxLabores.TabIndex = 4;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -351,19 +354,18 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabEstudiante.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabProfesor.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.tabAdministrativo.ResumeLayout(false);
-            this.tabServicios_Varios.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.tabServicios_Varios.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -376,27 +378,27 @@
         private TabPage tabAdministrativo;
         private TabPage tabServicios_Varios;
         private GroupBox groupBox1;
-        private Button buttonAnadirMateria;
-        private Button buttonEliminarMateria;
-        private ListBox listaMaterias;
-        private TextBox textBoxMateria;
+        private Button buttonAnadirMateriaEstudiante;
+        private Button buttonEliminarMateriaEstudiante;
+        private ListBox listBoxMateriasEstudiante;
         private GroupBox groupBox2;
         private Label labelFacultad;
-        private Button buttonFacultad;
-        private ComboBox comboBox1;
+        private Button buttonFacultadModificar;
+        private ComboBox comboBoxFacultad;
         private GroupBox groupBox4;
-        private Button buttonAnadir;
-        private Button buttonEliminar;
-        private ListBox listBox1;
-        private TextBox textBox1;
+        private Button buttonMateriaAnadirProfesor;
+        private Button buttonMateriaEliminarProfesor;
+        private ListBox listBoxMateriasProfesor;
         private GroupBox groupBox5;
-        private Button buttonDependencia;
-        private Label label1;
-        private ComboBox comboBox2;
+        private Button buttonDependenciaConfirmar;
+        private Label labelDependenciaMostrar;
+        private ComboBox comboBoxDependencia;
         private GroupBox groupBox6;
         private Button buttonLaborAnadir;
         private Button buttonLaborEliminar;
         private ListBox listBoxLabores;
         private ComboBox comboBoxLabores;
+        private ComboBox comboBoxMateriasEstudiante;
+        private ComboBox comboBoxMateriasProfesor;
     }
 }

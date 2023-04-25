@@ -74,13 +74,13 @@ namespace Insititucion_Educativa
         public Empleado(int documento) 
         {
             Documento = documento;
-            Fecha_Registro = DateOnly.Parse(DateTime.Now.ToString());
+            Fecha_Registro = DateOnly.FromDateTime(DateTime.Now);
         }
 
         public Empleado()
         {
             
-            Fecha_Registro = DateOnly.Parse(DateTime.Now.ToString());
+            Fecha_Registro = DateOnly.FromDateTime(DateTime.Now);
         }
 
     }
@@ -163,12 +163,13 @@ namespace Insititucion_Educativa
 
     public class Profesor : Empleado 
     {
+        public List<Curso> Cursos_Dictados = new List<Curso>();
         public Facultad_Institucion Facultad;
         public Profesor(int documento, Facultad_Institucion facultad)
         {
             Documento = documento;
             Facultad = facultad;
-            List<Curso> Cursos_Dictados = new List<Curso>();
+            
         }
 
         void Cambio_Facultad (Facultad_Institucion nueva_facultad)
@@ -185,7 +186,7 @@ namespace Insititucion_Educativa
         
 
         public Dependencia_Institucion Dependencia;
-        List<Labor> Labores_Actuales = new List<Labor>();
+        public List<Labor> Labores_Actuales = new List<Labor>();
         internal Servicios_Varios(Dependencia_Institucion dependencia, int documento)
         {
             Documento = documento;
@@ -207,7 +208,7 @@ namespace Insititucion_Educativa
 
     public class Estudiante : Persona 
     {
-        List<Curso> Cursos_Actuales = new List<Curso>();
+        public List<Curso> Cursos_Actuales = new List<Curso>();
         internal Estudiante(int documento) 
         {
             Documento = documento;

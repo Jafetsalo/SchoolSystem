@@ -42,7 +42,7 @@
             this.comboBoxEstadoCivil = new System.Windows.Forms.ComboBox();
             this.comboBoxRol = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonEliminarPersona = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +131,7 @@
             this.comboBoxPersonas.Name = "comboBoxPersonas";
             this.comboBoxPersonas.Size = new System.Drawing.Size(121, 23);
             this.comboBoxPersonas.TabIndex = 10;
+            this.comboBoxPersonas.SelectedIndexChanged += new System.EventHandler(this.comboBoxPersonas_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -175,21 +176,22 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Rol";
             // 
-            // button1
+            // buttonEliminarPersona
             // 
-            this.button1.Location = new System.Drawing.Point(126, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonEliminarPersona.Location = new System.Drawing.Point(126, 169);
+            this.buttonEliminarPersona.Name = "buttonEliminarPersona";
+            this.buttonEliminarPersona.Size = new System.Drawing.Size(75, 23);
+            this.buttonEliminarPersona.TabIndex = 14;
+            this.buttonEliminarPersona.Text = "Eliminar";
+            this.buttonEliminarPersona.UseVisualStyleBackColor = true;
+            this.buttonEliminarPersona.Click += new System.EventHandler(this.ButtonEliminarPersona_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonEliminarPersona);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxRol);
             this.Controls.Add(this.comboBoxPersonas);
@@ -222,6 +224,6 @@
         private ComboBox comboBoxEstadoCivil;
         private ComboBox comboBoxRol;
         private Label label5;
-        private Button button1;
+        private Button buttonEliminarPersona;
     }
 }

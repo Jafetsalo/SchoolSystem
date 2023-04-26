@@ -1,4 +1,6 @@
-﻿namespace Insititucion_Educativa
+﻿using System.Windows.Forms;
+
+namespace Insititucion_Educativa
 {
     public partial class Form2 : Form
     {
@@ -22,6 +24,7 @@
             populateComboBox();
             populateListBox();
             populateLabel();
+            
         }
 
         private void clearForm() 
@@ -158,6 +161,7 @@
                     {
                         RolSeleccionado = "Administrativo";
                         Form1.AdministrativoSeleccionado = administrativo;
+                        hideTabMenus(2, false, false, true, false);
                     }
 
                 }
@@ -168,6 +172,7 @@
                     {
                         RolSeleccionado = "Estudiante";
                         Form1.EstudianteSeleccionado = estudiante;
+                        hideTabMenus(0, true, false, false, false);
                     }
                 }
 
@@ -177,6 +182,7 @@
                     {
                         RolSeleccionado = "Profesor";
                         Form1.ProfesorSeleccionado = profesor;
+                        hideTabMenus(1, false, true, false, false);
                     }
                 }
 
@@ -185,9 +191,8 @@
                     if (documentoRef == servicios_Varios.Documento)
                     {
                         RolSeleccionado = "Servicios varios";
-
                         Form1.ServiciosVariosSeleccionado = servicios_Varios;
-
+                        hideTabMenus(3, false, false, false, true);
                     }
                 }
             }
@@ -201,12 +206,21 @@
 
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             
         }
 
-
+        private void hideTabMenus(int selectedTab, bool firstTab, bool secondTab, bool thirdTab, bool fourthTab) 
+        {
+            tabControl1.SelectedIndex = selectedTab;
+            tabControl1.Enabled = true;
+            tabControl1.TabPages[0].Enabled = firstTab;
+            tabControl1.TabPages[1].Enabled = secondTab;
+            tabControl1.TabPages[2].Enabled = thirdTab;
+            tabControl1.TabPages[3].Enabled = fourthTab;
+        }
 
         private void buttonAnadirMateriaEstudiante_Click(object sender, EventArgs e)
         {
@@ -240,6 +254,40 @@
             //Add to local student
             //Find reference to student in form1 list
             //modify in that list the actual student
+        }
+
+        private void buttonEliminarMateriaEstudiante_Click(object sender, EventArgs e)
+        {
+            if (RolSeleccionado == "Estudiante")
+            {
+                try
+                {
+                    listBoxMateriasEstudiante.SelectedItem.ToString();
+
+                    Curso Eliminar;
+
+                    foreach (Curso curso in Form1.EstudianteSeleccionado.Cursos_Actuales)
+                    {
+                        if (curso.Nombre_Curso == listBoxMateriasEstudiante.SelectedItem.ToString())
+                        {
+                            Eliminar = curso;
+                            Form1.EstudianteSeleccionado.Cursos_Actuales.Remove(Eliminar);
+                            clearForm();
+                            populateComboBox();
+                            populateListBox();
+                            populateLabel();
+                            return;
+                        }
+                    }
+
+                }
+                catch
+                {
+                  MessageBox.Show("No ha elegido curso a eliminar. Por favor seleccione un curso a continuación", "Seleccione un curso", MessageBoxButtons.OK);
+                }
+
+
+            }
         }
     }
 

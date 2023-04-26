@@ -131,6 +131,7 @@
             this.buttonEliminarMateriaEstudiante.TabIndex = 2;
             this.buttonEliminarMateriaEstudiante.Text = "Eliminar";
             this.buttonEliminarMateriaEstudiante.UseVisualStyleBackColor = true;
+            this.buttonEliminarMateriaEstudiante.Click += new System.EventHandler(this.buttonEliminarMateriaEstudiante_Click);
             // 
             // listBoxMateriasEstudiante
             // 

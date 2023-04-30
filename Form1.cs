@@ -42,7 +42,7 @@ namespace Insititucion_Educativa
         {
 
             InitializeComponent();
-
+           
 
         }
 
@@ -52,7 +52,7 @@ namespace Insititucion_Educativa
 
             foreach (EstadoCivil estado in ListaEstadoCivil)
             {
-                comboBoxEstadoCivil.Items.Add(estado.Estado.ToString());
+                comboBoxEstadoCivil.Items.Add(estado.Nombre_Estado.ToString());
             }
 
             foreach (string Rol in listaRol) 
@@ -146,7 +146,7 @@ namespace Insititucion_Educativa
             
             foreach (EstadoCivil estado in ListaEstadoCivil) 
             {
-                if (estado.Estado == comboBoxEstadoCivil.SelectedItem.ToString()) 
+                if (estado.Nombre_Estado == comboBoxEstadoCivil.SelectedItem.ToString()) 
                 {
                     estadoSeleccionado = estado;
                 }
@@ -254,7 +254,7 @@ namespace Insititucion_Educativa
             Persona persona = new Persona(nombre, apellido, documento, estadoSeleccionado);
             ListaPersonas.Add(persona);
             MessageBox.Show($"Persona creada correctamente | Nombre {persona.Nombres} | Apellido {persona.Apellidos} " +
-                $"| Documento {persona.Documento}, Estado Civil {estadoSeleccionado.Estado} ");
+                $"| Documento {persona.Documento}, Estado Civil {estadoSeleccionado.Nombre_Estado} ");
         }
         public void populateLists() 
         {

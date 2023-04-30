@@ -40,7 +40,7 @@ namespace Insititucion_Educativa
         public string Nombres;
         public string Apellidos;
         public int Documento;
-        EstadoCivil Estado;
+        public EstadoCivil Estado;
 
         public Persona(string nombres, string apellidos, int documento, EstadoCivil estado_civil) 
         {
@@ -87,12 +87,12 @@ namespace Insititucion_Educativa
 
     public class EstadoCivil 
     {
-        public string Estado;
+        public string Nombre_Estado;
         public int IDestado;
 
        internal EstadoCivil(string estado, int id) 
         {
-            this.Estado = estado;
+            this.Nombre_Estado = estado;
             this.IDestado = id;
         }
     }

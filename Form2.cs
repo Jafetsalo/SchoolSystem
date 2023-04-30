@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Immutable;
+using System.Windows.Forms;
 
 namespace Insititucion_Educativa
 {
@@ -9,8 +10,6 @@ namespace Insititucion_Educativa
         string RolSeleccionado = "";
         public Form2()
         {
-
-
 
             InitializeComponent();
         }
@@ -24,6 +23,7 @@ namespace Insititucion_Educativa
             populateComboBox();
             populateListBox();
             populateLabel();
+            this.Text = $"Detalles para el usuario {Form1.PersonaSeleccionada.Nombres} de tipo {RolSeleccionado}";
             
         }
 
@@ -35,11 +35,14 @@ namespace Insititucion_Educativa
             comboBoxLabores.Items.Clear();
             comboBoxMateriasEstudiante.Items.Clear();
             comboBoxMateriasProfesor.Items.Clear();
+            comboBoxEstadoCivil.Items.Clear();
             listBoxLabores.Items.Clear();
             listBoxMateriasEstudiante.Items.Clear();
             listBoxMateriasProfesor.Items.Clear();
             labelDependenciaMostrar.Text = "No asignado";
             labelFacultad.Text = "No asignado";
+            labelEstadoCivil.Text = "No asignado";
+            labelRol.Text = "No asignado";
         }
 
         private void populateComboBox()
@@ -62,10 +65,14 @@ namespace Insititucion_Educativa
                 comboBoxMateriasProfesor.Items.Add(curso.Nombre_Curso.ToString());
             }
 
-
             foreach (Facultad_Institucion facultad in Form1.ListaFacultades)
             {
                 comboBoxFacultad.Items.Add(facultad.Nombre_Facultad.ToString());
+            }
+
+            foreach (EstadoCivil estadoCivil in Form1.ListaEstadoCivil)
+            {
+                comboBoxEstadoCivil.Items.Add(estadoCivil.Nombre_Estado.ToString());
             }
         }
 
@@ -120,6 +127,7 @@ namespace Insititucion_Educativa
                     }
 
                 }
+                labelRol.Text = "Administrativo";
             }
 
 
@@ -136,8 +144,34 @@ namespace Insititucion_Educativa
                     }
 
                 }
+                labelRol.Text = "Profesor";
             }
 
+            if (RolSeleccionado == "Estudiante")
+            {
+                labelRol.Text = "Estudiante";
+
+            }
+
+            if (RolSeleccionado == "Servicios varios")
+            {
+                labelRol.Text = "Servicios varios";
+
+            }
+
+            if (RolSeleccionado == "")
+            {
+                labelRol.Text = "No asignado";
+
+            }
+
+            labelEstadoCivil.Text = Form1.PersonaSeleccionada.Estado.Nombre_Estado;
+            textBoxNombre.Text = Form1.PersonaSeleccionada.Nombres;
+            textBoxApellidos.Text = Form1.PersonaSeleccionada.Apellidos;
+            textBoxDocumento.Text = Form1.PersonaSeleccionada.Documento.ToString();
+            textBoxNombre.Enabled = false;
+            textBoxApellidos.Enabled = false;
+            textBoxDocumento.Enabled = false;
         }
 
         private string busquedaRolPersona(Persona? personaSeleccionada) 
@@ -151,6 +185,7 @@ namespace Insititucion_Educativa
                     if (documentoRef == empleado.Documento)
                     {
                         RolSeleccionado = "Empleado";
+                        hideTabMenus(4, false, false, false, false, true);
                     }
 
                 }
@@ -195,6 +230,11 @@ namespace Insititucion_Educativa
                         hideTabMenus(3, false, false, false, true);
                     }
                 }
+
+                if (RolSeleccionado == "Sin rol Asignado" || RolSeleccionado == "") 
+                {
+                    hideTabMenus(4, false, false, false, false, true);
+                }
             }
             
 
@@ -207,10 +247,35 @@ namespace Insititucion_Educativa
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonDependenciaConfirmar_Click(object sender, EventArgs e)
         {
-            
+            if (RolSeleccionado == "Administrativo")
+            {
+                try
+                {
+                    Dependencia_Institucion dependenciaSeleccionada = Form1.ListaDependencias.ElementAt(comboBoxDependencia.SelectedIndex);
+                    if (dependenciaSeleccionada == Form1.AdministrativoSeleccionado.Dependencia)
+                    {
+                        MessageBox.Show("La Dependencia elegida ya estaba asignada, elija otra si desea modificarla", "Seleccione otra Dependencia", MessageBoxButtons.OK);
+                        return;
+                    }
+                    Form1.AdministrativoSeleccionado.Dependencia = dependenciaSeleccionada;
+                    clearForm();
+                    populateComboBox();
+                    populateListBox();
+                    populateLabel();
+                    MessageBox.Show($"Actualizado adecuadamente la dependecia {dependenciaSeleccionada.Nombre_Dependencia}","Actualizado correctamente");
+                }
+                catch
+                {
+ 
+                    MessageBox.Show("No ha elegido Dependencia. Por favor seleccione una Dependencia a continuación", "Seleccione una Dependencia", MessageBoxButtons.OK);
+                }
+            }
+
+
         }
+    
 
         private void hideTabMenus(int selectedTab, bool firstTab, bool secondTab, bool thirdTab, bool fourthTab) 
         {
@@ -220,6 +285,18 @@ namespace Insititucion_Educativa
             tabControl1.TabPages[1].Enabled = secondTab;
             tabControl1.TabPages[2].Enabled = thirdTab;
             tabControl1.TabPages[3].Enabled = fourthTab;
+            tabControl1.TabPages[4].Enabled = true;
+        }
+
+        private void hideTabMenus(int selectedTab, bool firstTab, bool secondTab, bool thirdTab, bool fourthTab, bool fifthTab)
+        {
+            tabControl1.SelectedIndex = selectedTab;
+            tabControl1.Enabled = true;
+            tabControl1.TabPages[0].Enabled = firstTab;
+            tabControl1.TabPages[1].Enabled = secondTab;
+            tabControl1.TabPages[2].Enabled = thirdTab;
+            tabControl1.TabPages[3].Enabled = fourthTab;
+            tabControl1.TabPages[4].Enabled = fifthTab;
         }
 
         private void buttonAnadirMateriaEstudiante_Click(object sender, EventArgs e)
@@ -286,6 +363,190 @@ namespace Insititucion_Educativa
                   MessageBox.Show("No ha elegido curso a eliminar. Por favor seleccione un curso a continuación", "Seleccione un curso", MessageBoxButtons.OK);
                 }
 
+
+            }
+        }
+
+        private void buttonMateriaEliminarProfesor_Click(object sender, EventArgs e) 
+        {
+            if (RolSeleccionado == "Profesor")
+            {
+                try
+                {
+                    listBoxMateriasProfesor.SelectedItem.ToString();
+
+                    Curso Eliminar;
+
+                    foreach (Curso curso in Form1.ProfesorSeleccionado.Cursos_Dictados)
+                    {
+                        if (curso.Nombre_Curso == listBoxMateriasProfesor.SelectedItem.ToString())
+                        {
+                            Eliminar = curso;
+                            Form1.ProfesorSeleccionado.Cursos_Dictados.Remove(Eliminar);
+                            clearForm();
+                            populateComboBox();
+                            populateListBox();
+                            populateLabel();
+                            return;
+                        }
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("No ha elegido curso a eliminar. Por favor seleccione un curso a continuación", "Seleccione un curso", MessageBoxButtons.OK);
+                }
+
+
+            }
+        }
+
+        private void buttonMateriaAnadirProfesor_Click(object sender, EventArgs e) 
+        {
+            if (RolSeleccionado == "Profesor")
+            {
+                try
+                {
+                    Curso Agregar = Form1.ListaCursos.ElementAt(comboBoxMateriasProfesor.SelectedIndex);
+
+                    foreach (Curso curso in Form1.ProfesorSeleccionado.Cursos_Dictados)
+                    {
+                        if (curso == Agregar)
+                        {
+                            MessageBox.Show($"Curso {curso.Nombre_Curso} ya estaba asignado a Profesor {Form1.PersonaSeleccionada.Nombres}", "Curso asignado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    Form1.ProfesorSeleccionado.Cursos_Dictados.Add(Agregar);
+                    clearForm();
+                    populateComboBox();
+                    populateListBox();
+                    populateLabel();
+                }
+                catch
+                {
+                    MessageBox.Show("No ha elegido curso. Por favor seleccione un curso a continuación", "Seleccione un curso", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void ButtonFacultadModificar_Click(object sender, EventArgs e)
+        {
+            if (RolSeleccionado == "Profesor") {
+                try
+                {
+                    Facultad_Institucion Facultad_Asignada = Form1.ListaFacultades.ElementAt(comboBoxFacultad.SelectedIndex);
+                    if (Facultad_Asignada == Form1.ProfesorSeleccionado.Facultad)
+                    {
+                        MessageBox.Show("La facultad elegida ya estaba asignada, elija otra si desea modificarla", "Seleccione otra facultad", MessageBoxButtons.OK);
+                        return;
+                    }
+                    Form1.ProfesorSeleccionado.Facultad = Facultad_Asignada;
+                    clearForm();
+                    populateComboBox();
+                    populateListBox();
+                    populateLabel();
+                    MessageBox.Show($"Actualizado adecuadamente la facultad {Facultad_Asignada.Nombre_Facultad}", "Actualizado Facultad");
+
+                }
+                catch
+                {
+
+                    MessageBox.Show("No ha elegido Facultad. Por favor seleccione una Facultad a continuación", "Seleccione una facultad", MessageBoxButtons.OK);
+
+                }
+            }
+
+
+        }
+
+        private void buttonLaborAnadir_Click(object sender, EventArgs e) 
+        {
+            if (RolSeleccionado == "Servicios varios")
+            {
+                try
+                {
+                    Labor Agregar = Form1.ListaLabores.ElementAt(comboBoxLabores.SelectedIndex);
+
+                    foreach (Labor labor in Form1.ServiciosVariosSeleccionado.Labores_Actuales)
+                    {
+                        if (labor == Agregar)
+                        {
+                            MessageBox.Show($"La labor {labor.Nombre_Labor} ya estaba asignado a Empleado {Form1.PersonaSeleccionada.Nombres}", "Labor asignada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    Form1.ServiciosVariosSeleccionado.Labores_Actuales.Add(Agregar);
+                    clearForm();
+                    populateComboBox();
+                    populateListBox();
+                    populateLabel();
+                }
+                catch
+                {
+                    MessageBox.Show("No ha elegido labor. Por favor seleccione una labor a continuación", "Seleccione una labor", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void ButtonLaborEliminar_Click(object sender, EventArgs e)
+        {
+            if (RolSeleccionado == "Servicios varios")
+            {
+                try
+                {
+                    
+                    //listBoxLabores.SelectedItem.ToString();
+                    Labor Eliminar;
+
+                    foreach (Labor labor in Form1.ServiciosVariosSeleccionado.Labores_Actuales)
+                    {
+                        if (labor.Nombre_Labor == listBoxLabores.SelectedItem.ToString())
+                        {
+                            Eliminar = labor;
+                            Form1.ServiciosVariosSeleccionado.Labores_Actuales.Remove(Eliminar);
+                            clearForm();
+                            populateComboBox();
+                            populateListBox();
+                            populateLabel();
+                            return;
+                        }
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("No ha elegido labor a eliminar. Por favor seleccione una labor a continuación", "Seleccione una labor", MessageBoxButtons.OK);
+                }
+
+
+            }
+        }
+
+        private void ButtonModificarEstadoCivil_Click(object sender, EventArgs e) 
+        {
+            try
+            {
+                EstadoCivil Estado_Asignado = Form1.ListaEstadoCivil.ElementAt(comboBoxEstadoCivil.SelectedIndex);
+                if (Estado_Asignado == Form1.PersonaSeleccionada.Estado)
+                {
+                    MessageBox.Show("El estado Civil seleccionado ya estaba asignado, elija otro si desea modificarlo", "Seleccione otro Estado Civil", MessageBoxButtons.OK);
+                    return;
+                }
+                Form1.PersonaSeleccionada.Estado = Estado_Asignado;
+                clearForm();
+                populateComboBox();
+                populateListBox();
+                populateLabel();
+                MessageBox.Show($"Actualizado adecuadamente el Estado Civil {Estado_Asignado.Nombre_Estado}", "Actualizado Estado Civil");
+
+            }
+            catch
+            {
+
+                MessageBox.Show("No ha elegido Estado Civil. Por favor seleccione un Estado Civil a continuación", "Seleccione un Estado Civil", MessageBoxButtons.OK);
 
             }
         }
